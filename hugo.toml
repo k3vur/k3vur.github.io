@@ -1,6 +1,6 @@
-baseURL = 'https://kevur.me/'
+baseURL = 'https://k3vur.github.io/'
 languageCode = 'en-us'
-title = 'k3vur.me'
+title = 'k3vur.github.io'
 theme = 'typo'
 
 [caches]
