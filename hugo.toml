@@ -1,7 +1,69 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://kevur.me/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'k3vur.me'
+theme = 'typo'
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+# Meta description
+description = "Profile of Kevin Urban"
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'base16-default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Hi!'
+homeIntroContent = """
+I am Software Engineer based in tri-border area Germany, Switzerland and France. With over 10 years of experience, I have a strong interest in full-stack software engineering topics.
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Posts'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+[params.breadcrumbs]
+enabled = true
+showCurrentPage = true
+home = "Home"
+
+# Social icons
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/kevin-urban-38bb46100/"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/k3vur"
+
+# Main menu pages
+[[params.menu]]
+name = "home"
+url = "/"
+
+[[params.menu]]
+name = "posts"
+url = "/posts"
+
+[[params.menu]]
+name = "about"
+url = "/about"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'algol'
+
+# Giscus comments
+[params.giscus]
+enable = false
