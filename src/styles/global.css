@@ -27,16 +27,6 @@
   --color-de: var(--color-warm);
   --color-de-soft: var(--color-warm-soft);
 
-  /* ---- typography: families (DESIGN.md §4) ---------------------------- */
-  /* Note: redefining --font-* REPLACES Tailwind's default stacks. */
-  --font-serif:
-    "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans:
-    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono:
-    "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
-    monospace;
-
   /* ---- typography: sizes (minor third) --------------------------------
      --text-<name>  generates text-<name>; the --line-height / --font-weight
      modifiers attach to the same utility (text-h3 + inline line-height). */
@@ -101,6 +91,12 @@
 
   /* ---- easing (used by any transition you add) ------------------------- */
   --ease-default: cubic-bezier(0.3, 0, 0, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-fira);
 }
 
 @layer base {
