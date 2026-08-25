@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- color: neutrals (DESIGN.md §5) ---- */
+  --color-paper: #faf9f5; /* page background — warm off-white */
+  --color-surface: #ffffff; /* cards, raised elements */
+  --color-ink: #1a1916; /* primary text (never pure black) */
+  --color-ink-soft: #403d37; /* secondary text */
+  --color-muted: #6e6a61; /* meta, dates, captions */
+  --color-hairline: #e5e1d6; /* 1px borders and dividers */
+
+  /* ---- color: accent (petrol) — interactive & structural only ---- */
+  --color-accent: #14655b; /* links, active states, the wordmark period */
+  --color-accent-strong: #0c463f; /* hover / pressed */
+  --color-accent-soft: #e3efeb; /* selection, active lang chip, EN badge bg */
+
+  /* ---- color: warm (ochre) — DE badges ONLY, never competes with petrol ---- */
+  --color-warm: #8a5a17; /* DE badge text */
+  --color-warm-strong: #6f470f; /* DE badge hover */
+  --color-warm-soft: #f5eedf; /* DE badge background */
+
+  /* ---- semantic badges: meaningful names, same values -----------------
+     The badge contract (DESIGN.md §9): EN = petrol, DE = ochre.
+     Gives you bg-en/text-en and bg-de/text-de directly in markup.      */
+  --color-en: var(--color-accent);
+  --color-en-soft: var(--color-accent-soft);
+  --color-de: var(--color-warm);
+  --color-de-soft: var(--color-warm-soft);
+
+  /* ---- typography: families (DESIGN.md §4) ---------------------------- */
+  /* Note: redefining --font-* REPLACES Tailwind's default stacks. */
+  --font-serif:
+    "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  /* ---- typography: sizes (minor third) --------------------------------
+     --text-<name>  generates text-<name>; the --line-height / --font-weight
+     modifiers attach to the same utility (text-h3 + inline line-height). */
+  --text-display: clamp(
+    2.5rem,
+    1.2rem + 5vw,
+    3.75rem
+  ); /* hero H1, section titles */
+  --text-display--line-height: 1.15;
+  --text-h2: clamp(1.55rem, 1.1rem + 1.6vw, 2.05rem); /* section headings */
+  --text-h2--line-height: 1.15;
+  --text-h3: 1.22rem; /* card / column headings */
+  --text-h3--line-height: 1.15;
+  --text-body: 1.0625rem; /* 17px default */
+  --text-body--line-height: 1.7;
+  --text-small: 0.92rem; /* excerpts, captions */
+  --text-small--line-height: 1.6;
+  --text-meta: 0.8rem; /* meta lines (use with font-mono) */
+  --text-micro: 0.72rem; /* badges (use with font-mono) */
+
+  /* ---- typography: letter-spacing (DESIGN.md §4 rules) ---------------- */
+  --tracking-eyebrow: 0.14em; /* uppercase mono eyebrows + badges */
+  --tracking-meta: 0.08em; /* dates, small meta */
+  --tracking-tight: -0.015em; /* headings (replaces default -0.025em) */
+  --tracking-wordmark: -0.02em; /* the kevur.me wordmark */
+
+  /* ---- typography: generic line-heights --------------------------------- */
+  --leading-body: 1.7; /* prose */
+  --leading-display: 1.15; /* headings */
+  --leading-lede: 1.45; /* serif ledes / hero intro */
+
+  /* ---- layout (DESIGN.md §6) ------------------------------------------ */
+  --max-text: 680px; /* reading column — use as max-w-[var(--max-text)] */
+  --max-wide: 940px; /* heroes, listings — max-w-[var(--max-wide)] */
+  /* Page shell: width: min(100% - 3rem, var(--max-wide)) */
+
+  /* ---- spacing (8pt grid) ------------------------------------------------
+     Tailwind v4 already gives you EVERY multiple of 0.25rem dynamically:
+         mockup s1 (8px)  ->  p-2        s4 (32px) ->  p-8
+         s2 (16px)        ->  p-4        s5 (48px) ->  p-12
+         s3 (24px)        ->  p-6        s6 (72px) ->  p-18
+     The named tokens below are pure sugar for DESIGN.md fidelity; you can
+     delete them and use the numeric scale everywhere. */
+  --spacing-s1: 0.5rem; /*   8px */
+  --spacing-s2: 1rem; /*  16px */
+  --spacing-s3: 1.5rem; /*  24px */
+  --spacing-s4: 2rem; /*  32px */
+  --spacing-s5: 3rem; /*  48px */
+  --spacing-s6: 4.5rem; /*  72px */
+
+  /* ---- radius ------------------------------------------------------------
+     The DESIGN has exactly two radii: 8px everywhere, 999px pills.
+     round them as rounded-card / rounded-pill. */
+  --radius-card: 8px;
+  --radius-pill: 999px;
+
+  /* ---- breakpoints --------------------------------------------------------
+     The design has exactly ONE breakpoint: 720px (rows collapse below it).
+     This wipes Tailwind's sm/lg/xl/2xl scale; add more when you need them. */
+  --breakpoint-*: initial;
+  --breakpoint-md: 45rem; /* 720px */
+
+  /* ---- easing (used by any transition you add) ------------------------- */
+  --ease-default: cubic-bezier(0.3, 0, 0, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* All headings: serif, medium, tight. Never add a level below h3. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
