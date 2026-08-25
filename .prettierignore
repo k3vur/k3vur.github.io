@@ -1,0 +1,7 @@
+node_modules
+.astro
+dist
+public
+pnpm-lock.yaml
+.vscode
+.zed
