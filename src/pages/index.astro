@@ -1,12 +1,72 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
-import "../styles/global.css";
+import Eyebrow from "../components/Eyebrow.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout language="en">
-  <Welcome />
+  <div class="flex flex-col gap-s5 py-s6">
+    <section>
+      <Eyebrow>Software Engineer</Eyebrow>
+      <h1 class="font-medium mt-3 mb-5 text-4xl md:text-6xl">
+        Hi, I'm Kevin Urban.
+      </h1>
+      <p class="font-serif text-xl md:text-2xl leading-lede mb-5 text-ink-soft">
+        I build full stack software and occasionally talk about the process of
+        building it.
+      </p>
+      <p class="flex font-mono text-sm text-muted mb-s4 gap-2">
+        <span>BW, Germany</span> &middot;
+        <span>kevin.urban@icloud.com</span> &middot;
+        <span>he/him</span> &middot;
+        <a class="text-accent whitespace-nowrap flex gap-0.5" href="" rel="me"
+          >GitHub &#x2197;</a
+        >&middot;
+        <a class="text-accent whitespace-nowrap flex gap-0.5" href="" rel="me"
+          >LinkedIn &#x2197;</a
+        >
+      </p>
+    </section>
+
+    <section class="max-w-max-text text-ink-soft flex flex-col gap-5">
+      <p>
+        I have been a professional Software Engineer since 2014, although I
+        studied Computer Science for 5 years before that and started coding even
+        earlier than that. I care about code and everything that relates to it,
+        wheter it's trying to find the best and simplest abstraction, enabling
+        my team to ship more consistently, or talking to users to find out how
+        the next feature can help them best.
+      </p>
+      <p>
+        Whenever I get the opportunity, I also like to talk about building
+        software or publish what I build privately. This is my showcase for
+        that.
+      </p>
+    </section>
+
+    <section
+      class="grid grid-cols-1 gap-y-s5 md:grid-cols-2 md:gap-y-0 items-start divide-hairline divide-y md:divide-x md:divide-y-0"
+    >
+      <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
+        <div class="text-xl flex items-baseline justify-between gap-s2 pr-s3">
+          <h2>Selected Projects</h2>
+          <a
+            class="font-mono text-sm tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-3"
+            href="/projects">All Projects &rarr;</a
+          >
+        </div>
+      </div>
+      <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
+        <div class="text-xl flex items-baseline justify-between gap-s2 pl-s3">
+          <h2>Talks</h2>
+          <a
+            class="font-mono text-sm tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-3"
+            href="/projects">All talks &rarr;</a
+          >
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>

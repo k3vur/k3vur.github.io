@@ -39,11 +39,13 @@ const { language } = Astro.props;
         <Navigation />
       </div>
     </header>
-    <main>
-      <slot />
+    <main class="px-s3">
+      <div class="mx-auto max-w-wide">
+        <slot />
+      </div>
     </main>
     <footer
-      class="border-t border-t-hairline mt-s6 py-s4 text-muted text-small"
+      class="border-t border-t-hairline mt-s6 py-s4 text-muted text-small px-s3"
     >
       <div class="flex justify-between gap-s2 flex-wrap mx-auto max-w-wide">
         <div>&copy; 2026 kevur.me</div>
