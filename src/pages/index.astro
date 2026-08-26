@@ -7,10 +7,29 @@ import Eyebrow from "../components/Eyebrow.astro";
 ---
 
 <Layout language="en">
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Kevin Urban",
+      url: "https://kevur.me/",
+      jobTitle: "Software Engineer",
+      email: "mailto:kevin.urban@icloud.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Baden-Württemberg, Germany",
+      },
+      sameAs: [
+        "https://github.com/k3vur",
+        "https://www.linkedin.com/in/kevin-urban-38bb46100/",
+      ],
+    })}
+  />
   <div class="flex flex-col gap-s5 pt-s6 pb-s5">
     <section>
       <Eyebrow>Software Engineer</Eyebrow>
-      <h1 class="font-medium mt-s1 mb-s3 text-display md:text-display-lg">
+      <h1 class="font-medium mt-s2 mb-s3 text-display md:text-display-lg">
         Hi, I'm Kevin Urban.
       </h1>
       <p
@@ -19,21 +38,25 @@ import Eyebrow from "../components/Eyebrow.astro";
         I build full stack software and occasionally talk about the process of
         building it.
       </p>
-      <p class="flex font-mono text-meta text-muted mb-s4 gap-s1">
+      <div class="flex font-mono text-meta text-muted mb-s4 gap-s1">
         <span>BW, Germany</span> &middot;
         <span>kevin.urban@icloud.com</span> &middot;
         <span>he/him</span> &middot;
         <a
           class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
-          href=""
-          rel="me">GitHub &#x2197;</a
+          href="https://github.com/k3vur"
+          target="_blank"
+          rel="me noopener noreferrer"
+          >GitHub <span aria-hidden>&#x2197;</span></a
         >&middot;
         <a
           class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
-          href=""
-          rel="me">LinkedIn &#x2197;</a
+          href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
+          target="_blank"
+          rel="me noopener noreferrer"
+          >LinkedIn <span aria-hidden>&#x2197;</span></a
         >
-      </p>
+      </div>
     </section>
 
     <section
@@ -43,7 +66,7 @@ import Eyebrow from "../components/Eyebrow.astro";
         I have been a professional Software Engineer since 2014, although I
         studied Computer Science for 5 years before that and started coding even
         earlier than that. I care about code and everything that relates to it,
-        wheter it's trying to find the best and simplest abstraction, enabling
+        whether it's trying to find the best and simplest abstraction, enabling
         my team to ship more consistently, or talking to users to find out how
         the next feature can help them best.
       </p>
@@ -55,10 +78,27 @@ import Eyebrow from "../components/Eyebrow.astro";
     </section>
 
     <section
+      class="max-w-max-text text-ink-soft flex flex-col gap-s2 text-body m-0"
+    >
+      <Eyebrow>Now</Eyebrow>
+      <p>
+        Most recently, I've been a Senior Full Stack Engineer at DeepL, building
+        the internal language data platform. Since recent layoffs, I'm open for
+        new challenges.
+      </p>
+      <p>
+        Want to get in contact? Email me at <a
+          class="text-accent hover:text-accent-strong hover:underline"
+          href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com!</a
+        >
+      </p>
+    </section>
+
+    <section
       class="py-s5 grid grid-cols-1 gap-y-s5 md:grid-cols-2 md:gap-y-0 items-start divide-hairline divide-y md:divide-x md:divide-y-0"
     >
       <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
-        <div class="text-xl flex items-baseline justify-between gap-s2 pr-s3">
+        <div class="flex items-baseline justify-between gap-s2 pr-s3">
           <h2 class="text-sub">Selected Projects</h2>
           <a
             class="font-mono text-meta tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-4"
@@ -67,11 +107,11 @@ import Eyebrow from "../components/Eyebrow.astro";
         </div>
       </div>
       <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
-        <div class="text-xl flex items-baseline justify-between gap-s2 pl-s3">
+        <div class="flex items-baseline justify-between gap-s2 pl-s3">
           <h2 class="text-sub">Talks</h2>
           <a
             class="font-mono text-meta tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-4"
-            href="/projects">All talks &rarr;</a
+            href="/talks">All talks &rarr;</a
           >
         </div>
       </div>

@@ -5,8 +5,19 @@ import LanguagePicker from "../components/LanguagePicker.astro";
 import Navigation from "../components/Navigation.astro";
 interface Props {
   language: "de" | "en";
+  title?: string;
+  description?: string;
+  /** Absolute URL of this page; defaults to the homepage. */
+  url?: string;
 }
-const { language } = Astro.props;
+const {
+  language,
+  title = "kevur.me – Kevin Urban, Software Engineer",
+  description = "Kevin Urban is a full-stack software engineer based in Baden-Württemberg, Germany, building software since 2014.",
+  url = "https://kevur.me/",
+} = Astro.props;
+const siteName = "kevur.me";
+// NOTE: an og:image is intentionally omitted until a share image asset exists.
 ---
 
 <!doctype html>
@@ -14,13 +25,21 @@ const { language } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <Font cssVariable="--font-newsreader" />
     <Font cssVariable="--font-inter" />
     <Font cssVariable="--font-fira" />
     <meta name="generator" content={Astro.generator} />
-    <title>kevur.me – Kevin Urban, Software Engineer</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
   </head>
   <body>
     <header class="sticky top-0 z-10 bg-paper border-b border-b-hairline px-s3">

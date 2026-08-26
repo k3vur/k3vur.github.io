@@ -169,6 +169,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--spacing-s6);
     -webkit-text-size-adjust: 100%;
   }
 
