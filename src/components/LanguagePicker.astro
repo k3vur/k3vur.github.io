@@ -1,0 +1,33 @@
+---
+import { cn } from "cnfast";
+import { cva } from "class-variance-authority";
+interface Props {
+  class: string;
+  currentLanguage: "de" | "en";
+}
+const { class: className, currentLanguage } = Astro.props;
+const languageButton = cva(
+  ["text-muted", "py-0.5", "px-1.5", "rounded-full", "hover:text-ink"],
+  {
+    variants: {
+      active: {
+        true: ["text-accent-strong", "bg-accent-soft", "font-medium"],
+        false: null,
+      },
+    },
+  },
+);
+---
+
+<div
+  class={cn(
+    "flex items-center gap-s1 font-mono text-xs tracking-meta",
+    className,
+  )}
+  role="group"
+  aria-label="Language"
+>
+  <a class={languageButton({ active: currentLanguage === "en" })}>EN</a>
+  <span class="text-hairline" aria-hidden="true">/</span>
+  <a class={languageButton({ active: currentLanguage === "de" })}>DE</a>
+</div>

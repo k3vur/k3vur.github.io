@@ -60,8 +60,8 @@
 
   /* ---- layout (DESIGN.md §6) ------------------------------------------ */
   --max-text: 680px; /* reading column — use as max-w-[var(--max-text)] */
-  --max-wide: 940px; /* heroes, listings — max-w-[var(--max-wide)] */
-  /* Page shell: width: min(100% - 3rem, var(--max-wide)) */
+  --container-wide: 940px; /* generates the max-w-wide utility (Tailwind v4 container namespace) */
+  /* Page shell: width: min(100% - 3rem, var(--container-wide)) */
 
   /* ---- spacing (8pt grid) ------------------------------------------------
      Tailwind v4 already gives you EVERY multiple of 0.25rem dynamically:
