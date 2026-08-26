@@ -7,7 +7,7 @@ interface Props {
 }
 const { class: className, currentLanguage } = Astro.props;
 const languageButton = cva(
-  ["text-muted", "py-0.5", "px-1.5", "rounded-full", "hover:text-ink"],
+  ["text-muted", "py-s0", "px-s1", "rounded-full", "hover:text-ink"],
   {
     variants: {
       active: {
@@ -21,7 +21,7 @@ const languageButton = cva(
 
 <div
   class={cn(
-    "flex items-center gap-s1 font-mono text-xs tracking-meta",
+    "flex items-center gap-s1 font-mono text-micro tracking-meta",
     className,
   )}
   role="group"

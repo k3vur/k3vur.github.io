@@ -25,10 +25,10 @@ const { language } = Astro.props;
   <body>
     <header class="sticky top-0 z-10 bg-paper border-b border-b-hairline px-s3">
       <div
-        class="flex flex-wrap md:flex-nowrap items-center gap-s3 py-s2 mx-auto max-w-wide"
+        class="flex flex-wrap md:flex-nowrap items-center gap-s3 py-s1h mx-auto max-w-max-width"
       >
         <a
-          class="group font-mono font-medium text-lg tracking-tight text-ink whitespace-nowrap md:order-1"
+          class="text-body group font-mono font-medium text-lg tracking-tight text-ink whitespace-nowrap md:order-1"
           href="/"
         >
           kevur<span class="text-accent group-hover:text-accent-strong"
@@ -39,17 +39,21 @@ const { language } = Astro.props;
         <Navigation />
       </div>
     </header>
+
     <main class="px-s3">
-      <div class="mx-auto max-w-wide">
+      <div class="mx-auto max-w-max-width">
         <slot />
       </div>
     </main>
+
     <footer
       class="border-t border-t-hairline mt-s6 py-s4 text-muted text-small px-s3"
     >
-      <div class="flex justify-between gap-s2 flex-wrap mx-auto max-w-wide">
+      <div
+        class="flex justify-between gap-s2 flex-wrap mx-auto max-w-max-width"
+      >
         <div>&copy; 2026 kevur.me</div>
-        <div class="flex gap-5 flex-wrap">
+        <div class="flex gap-s3 flex-wrap">
           <a
             class="text-ink-soft hover:text-accent"
             href="mailto:kevin.urban@icloud.com">Email</a

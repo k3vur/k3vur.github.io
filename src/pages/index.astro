@@ -7,30 +7,38 @@ import Eyebrow from "../components/Eyebrow.astro";
 ---
 
 <Layout language="en">
-  <div class="flex flex-col gap-s5 py-s6">
+  <div class="flex flex-col gap-s5 pt-s6 pb-s5">
     <section>
       <Eyebrow>Software Engineer</Eyebrow>
-      <h1 class="font-medium mt-3 mb-5 text-4xl md:text-6xl">
+      <h1 class="font-medium mt-s1 mb-s3 text-display md:text-display-lg">
         Hi, I'm Kevin Urban.
       </h1>
-      <p class="font-serif text-xl md:text-2xl leading-lede mb-5 text-ink-soft">
+      <p
+        class="font-serif text-sub md:text-sub-lg leading-lede mb-s3 text-ink-soft"
+      >
         I build full stack software and occasionally talk about the process of
         building it.
       </p>
-      <p class="flex font-mono text-sm text-muted mb-s4 gap-2">
+      <p class="flex font-mono text-meta text-muted mb-s4 gap-s1">
         <span>BW, Germany</span> &middot;
         <span>kevin.urban@icloud.com</span> &middot;
         <span>he/him</span> &middot;
-        <a class="text-accent whitespace-nowrap flex gap-0.5" href="" rel="me"
-          >GitHub &#x2197;</a
+        <a
+          class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
+          href=""
+          rel="me">GitHub &#x2197;</a
         >&middot;
-        <a class="text-accent whitespace-nowrap flex gap-0.5" href="" rel="me"
-          >LinkedIn &#x2197;</a
+        <a
+          class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
+          href=""
+          rel="me">LinkedIn &#x2197;</a
         >
       </p>
     </section>
 
-    <section class="max-w-max-text text-ink-soft flex flex-col gap-5">
+    <section
+      class="max-w-max-text text-ink-soft flex flex-col gap-s2 text-body m-0"
+    >
       <p>
         I have been a professional Software Engineer since 2014, although I
         studied Computer Science for 5 years before that and started coding even
@@ -47,22 +55,22 @@ import Eyebrow from "../components/Eyebrow.astro";
     </section>
 
     <section
-      class="grid grid-cols-1 gap-y-s5 md:grid-cols-2 md:gap-y-0 items-start divide-hairline divide-y md:divide-x md:divide-y-0"
+      class="py-s5 grid grid-cols-1 gap-y-s5 md:grid-cols-2 md:gap-y-0 items-start divide-hairline divide-y md:divide-x md:divide-y-0"
     >
       <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
         <div class="text-xl flex items-baseline justify-between gap-s2 pr-s3">
-          <h2>Selected Projects</h2>
+          <h2 class="text-sub">Selected Projects</h2>
           <a
-            class="font-mono text-sm tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-3"
+            class="font-mono text-meta tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-4"
             href="/projects">All Projects &rarr;</a
           >
         </div>
       </div>
       <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
         <div class="text-xl flex items-baseline justify-between gap-s2 pl-s3">
-          <h2>Talks</h2>
+          <h2 class="text-sub">Talks</h2>
           <a
-            class="font-mono text-sm tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-3"
+            class="font-mono text-meta tracking-meta uppercase text-accent whitespace-nowrap hover:text-accent-strong hover:underline hover:underline-offset-4"
             href="/projects">All talks &rarr;</a
           >
         </div>

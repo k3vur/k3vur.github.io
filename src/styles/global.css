@@ -1,6 +1,54 @@
+/* ==========================================================================
+   kevur.me — Tailwind CSS v4 theme
+   --------------------------------------------------------------------------
+   Single source of design truth for the Astro implementation.
+   All values come from ../DESIGN.md (§3 brand, §4 typography, §5 color,
+   §6 layout & spacing) and the mockup at mockup/assets/style.css.
+
+   HOW TO USE (start here):
+   - Requires Tailwind v4 + its Vite plugin. NOTE: the old @astrojs/tailwind
+     integration is DEPRECATED — do NOT install it. In astro.config.mjs:
+         import tailwindcss from "@tailwindcss/vite";
+         ... integrations: [], vite: { plugins: [tailwindcss()] }
+   - This file replaces the bare `@import "tailwindcss";` — import THIS file
+     once in your BaseLayout (or a global stylesheet), e.g.:
+         import "../styles/theme.css";
+   - Any token below becomes a utility automatically:
+       --color-paper  -> bg-paper, text-paper, border-paper, …
+       --font-serif   -> font-serif
+       --text-h3      -> text-h3
+       --radius-card  -> rounded-card
+       --spacing-s3   -> p-s3, gap-s3, mt-s3, …   (see spacing notes below)
+       --breakpoint-md-> md:… variants
+   - Tokens are also plain CSS variables at runtime (var(--color-accent), …).
+   - Out-of-the-box scales are REMOVED: no text-sm/text-xl, no dynamic
+     spacing (p-4, mt-2.5), no leading-normal/tracking-wide, no sm:/lg:/xl:
+     variants. Only the tokens below exist (DESIGN.md §4/§6).
+   - Type is STEPPED, not fluid (no clamp()): base token = ≤719px, its
+     -lg variant = ≥720px. Combine them in markup: `text-h1 md:text-h1-lg`.
+
+   VERSION CHECK: verify against https://tailwindcss.com/docs/theme for the
+   version you installed before relying on a token you don't use elsewhere.
+   ========================================================================== */
+
 @import "tailwindcss";
 
+/* --------------------------------------------------------------------------
+   THEME TOKENS
+   -------------------------------------------------------------------------- */
 @theme {
+  /* ---- wipe Tailwind's defaults for the namespaces we own --------------
+     Tailwind ships its own type scale (text-xs…9xl), a dynamic spacing
+     scale (every 0.25rem multiple: p-1.5, mt-13, w-17), default
+     line-heights & letter-spacings, and the sm/md/lg/… breakpoints.
+     The design owns these scales (DESIGN.md §4/§6), so they are all
+     removed — only the tokens redefined below are available. */
+  --spacing-*: initial;
+  --text-*: initial;
+  --leading-*: initial;
+  --tracking-*: initial;
+  --breakpoint-*: initial;
+
   /* ---- color: neutrals (DESIGN.md §5) ---- */
   --color-paper: #faf9f5; /* page background — warm off-white */
   --color-surface: #ffffff; /* cards, raised elements */
@@ -27,25 +75,37 @@
   --color-de: var(--color-warm);
   --color-de-soft: var(--color-warm-soft);
 
-  /* ---- typography: sizes (minor third) --------------------------------
-     --text-<name>  generates text-<name>; the --line-height / --font-weight
-     modifiers attach to the same utility (text-h3 + inline line-height). */
-  --text-display: clamp(
-    2.5rem,
-    1.2rem + 5vw,
-    3.75rem
-  ); /* hero H1, section titles */
-  --text-display--line-height: 1.15;
-  --text-h2: clamp(1.55rem, 1.1rem + 1.6vw, 2.05rem); /* section headings */
-  --text-h2--line-height: 1.15;
-  --text-h3: 1.22rem; /* card / column headings */
-  --text-h3--line-height: 1.15;
-  --text-body: 1.0625rem; /* 17px default */
-  --text-body--line-height: 1.7;
+  /* ---- typography: families (DESIGN.md §4) ---------------------------- */
+  /* Note: redefining --font-* REPLACES Tailwind's default stacks. */
+  --font-serif: var(--font-newsreader);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-fira);
+
+  /* ---- typography: sizes (minor third, ~1.2) --------------------------
+     The default text-xs…9xl scale was wiped above — these are the ONLY
+     font-size utilities, and they are SIZE ONLY. Line-height comes from
+     the base layer (h1-h4 → --leading-display, body → --leading-body) or
+     is composed with a leading-* utility where text sits off its natural
+     element (e.g. `text-sub leading-lede` for the hero lede). Sizes are
+     STEPPED, not fluid: base ≤719px, -lg ≥720px, combined as `text-h1
+     md:text-h1-lg`. The ladder is one tight ramp: micro → meta → small →
+     body → h3 → sub → h2 → h1 → display, with a single tier between body
+     and h2 (--text-sub: prose h2, CV headings, hero lede; split panels
+     use only the base, 1.32rem) (DESIGN.md §4). */
+  --text-display: 2.5rem; /* 40px — hero display (mobile) */
+  --text-display-lg: 3.75rem; /* 60px — md: and up */
+  --text-h1: 1.9rem; /* 30.4px — page titles: post, CV, 404 (mobile) */
+  --text-h1-lg: 2.9rem; /* 46.4px — md: and up */
+  --text-h2: 1.55rem; /* 24.8px — section headings (mobile) */
+  --text-h2-lg: 2.05rem; /* 32.8px — md: and up */
+  --text-sub: 1.32rem; /* 21.1px — sub-headings: prose h2, CV, lede (mobile) */
+  --text-sub-lg: 1.65rem; /* 26.4px — md: and up */
+  --text-h3: 1.22rem; /* 19.5px — cards, list titles, blockquotes */
+  --text-body: 1.0625rem; /* 17px default — intro paragraphs too (muted) */
   --text-small: 0.92rem; /* excerpts, captions */
-  --text-small--line-height: 1.6;
   --text-meta: 0.8rem; /* meta lines (use with font-mono) */
   --text-micro: 0.72rem; /* badges (use with font-mono) */
+  --text-code: 0.86em; /* inline & block code */
 
   /* ---- typography: letter-spacing (DESIGN.md §4 rules) ---------------- */
   --tracking-eyebrow: 0.14em; /* uppercase mono eyebrows + badges */
@@ -53,23 +113,35 @@
   --tracking-tight: -0.015em; /* headings (replaces default -0.025em) */
   --tracking-wordmark: -0.02em; /* the kevur.me wordmark */
 
-  /* ---- typography: generic line-heights --------------------------------- */
+  /* ---- typography: generic line-heights ---------------------------------
+     Leading is owned by the base layer (body 1.7, h1-h4 1.15) plus these
+     utilities for off-element text (e.g. `text-sub leading-lede` for the
+     hero lede); the text-* size tokens carry size only. */
   --leading-body: 1.7; /* prose */
   --leading-display: 1.15; /* headings */
   --leading-lede: 1.45; /* serif ledes / hero intro */
 
   /* ---- layout (DESIGN.md §6) ------------------------------------------ */
-  --container-max-text: 680px;
-  --container-wide: 940px;
+  --container-max-text: 680px; /* reading column — use as max-w-[var(--max-text)] */
+  --container-max-width: 940px; /* heroes, listings — max-w-[var(--max-wide)] */
+  /* Page shell: width: min(100% - 3rem, var(--max-wide)) */
 
-  /* ---- spacing (8pt grid) ------------------------------------------------
-     Tailwind v4 already gives you EVERY multiple of 0.25rem dynamically:
-         mockup s1 (8px)  ->  p-2        s4 (32px) ->  p-8
-         s2 (16px)        ->  p-4        s5 (48px) ->  p-12
-         s3 (24px)        ->  p-6        s6 (72px) ->  p-18
-     The named tokens below are pure sugar for DESIGN.md fidelity; you can
-     delete them and use the numeric scale everywhere. */
+  /* ---- prose rhythm (type-relative) ------------------------------------
+     Vertical rhythm inside .prose: paragraphs/lists 1.5em, blocks (quotes,
+     figures, pre, tables, h2 tops) 2em, scene breaks (hr) 2.5em. Plain CSS
+     vars only — no utilities generated from these. */
+  --rhythm: 1.5em;
+  --rhythm-lg: 2em;
+  --rhythm-xl: 2.5em;
+
+  /* ---- spacing (8pt grid + two half steps) -------------------------------
+     The dynamic default scale (every 0.25rem multiple: p-1.5, mt-13, w-17)
+     was wiped above — these named tokens are the ONLY spacing utilities in
+     the project: p-s1, mt-s3, gap-s1h, max-w-s4, … (DESIGN.md §6). */
+  --spacing-0: 0;
+  --spacing-s0: 0.25rem; /*   4px — stacked rows, tight gaps */
   --spacing-s1: 0.5rem; /*   8px */
+  --spacing-s1h: 0.75rem; /* 12px — action groups, component gaps */
   --spacing-s2: 1rem; /*  16px */
   --spacing-s3: 1.5rem; /*  24px */
   --spacing-s4: 2rem; /*  32px */
@@ -80,24 +152,20 @@
      The DESIGN has exactly two radii: 8px everywhere, 999px pills.
      round them as rounded-card / rounded-pill. */
   --radius-card: 8px;
-  --radius-pill: 999px;
+  --radius-full: calc(infinity * 1px);
 
   /* ---- breakpoints --------------------------------------------------------
      The design has exactly ONE breakpoint: 720px (rows collapse below it).
-     This wipes Tailwind's sm/lg/xl/2xl scale; add more when you need them. */
-  --breakpoint-*: initial;
+     (Tailwind's sm/md/lg/xl/2xl were wiped above; add more when needed.) */
   --breakpoint-md: 45rem; /* 720px */
 
   /* ---- easing (used by any transition you add) ------------------------- */
   --ease-default: cubic-bezier(0.3, 0, 0, 1);
 }
 
-@theme inline {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-newsreader);
-  --font-mono: var(--font-fira);
-}
-
+/* --------------------------------------------------------------------------
+   BASE LAYER — page defaults (mirrors mockup base styles)
+   -------------------------------------------------------------------------- */
 @layer base {
   html {
     scroll-behavior: smooth;
