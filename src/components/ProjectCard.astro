@@ -1,0 +1,32 @@
+---
+import type { Project } from "../lib/projects";
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<a
+  class="border-hairline rounded-card bg-surface p-s3 hover:border-accent gap-s1 group flex flex-col border transition-colors"
+  href={project.url}
+  target="_blank"
+>
+  <div class="gap-s1 flex items-baseline justify-between">
+    <h3
+      class="text-small text-ink group-hover:text-accent font-mono font-medium transition-colors"
+    >
+      {project.title}
+    </h3>
+    <span class="text-micro text-muted font-mono">{project.year}</span>
+  </div>
+  <div class="text-muted text-small block">{project.description}</div>
+  <div
+    class="pt-s1h border-t-hairline text-micro text-muted gap-s0 mt-auto flex flex-wrap border-t font-mono"
+  >
+    {
+      project.technologies.map((tech) => (
+        <span class="border-hairline px-s1h rounded-full border">{tech}</span>
+      ))
+    }
+  </div>
+</a>

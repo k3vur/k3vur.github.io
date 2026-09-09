@@ -4,6 +4,12 @@ import Eyebrow from "../components/Eyebrow.astro";
 import { Image } from "astro:assets";
 import Portrait from "../assets/kevin_urban.jpg";
 import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = (await getCollection("projects"))
+  .toSorted((p1, p2) => p2.data.year - p1.data.year)
+  .slice(0, 3);
 ---
 
 <Layout language="en">
@@ -110,15 +116,18 @@ import Link from "../components/Link.astro";
     <section
       class="py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0"
     >
-      <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
-        <div class="gap-s2 pr-s3 flex items-baseline justify-between">
-          <h2 class="text-sub">Selected Projects</h2>
+      <div class="pt-s5 pr-s3 gap-s3 flex flex-col md:pt-0">
+        <div class="gap-s2 flex items-baseline justify-between">
+          <h2 class="text-sub">Recent Projects</h2>
           <Link
             href="/projects"
             class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
           >
             All Projects &rarr;
           </Link>
+        </div>
+        <div class="gap-s3 grid grid-cols-1">
+          {projects.map((p) => <ProjectCard project={p.data} />)}
         </div>
       </div>
       <div class="pt-s5 gap-s3 flex flex-col md:pt-0">

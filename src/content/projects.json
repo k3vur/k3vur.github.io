@@ -1,0 +1,29 @@
+{
+  "$schema": "../../.astro/collections/projects.schema.json",
+  "pump-it": {
+    "title": "Pump It",
+    "url": "https://github.com/k3vur/pump-it",
+    "description": "My personal browser based workout app.",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "TanStack Router / DB / Form",
+      "Storybook"
+    ],
+    "year": 2026
+  },
+  "tug": {
+    "title": "tug",
+    "url": "https://github.com/k3vur/tug",
+    "description": "Vibe coded k9s but for plain docker.",
+    "technologies": ["go", "claude"],
+    "year": 2026
+  },
+  "gw.fish": {
+    "title": "gw.fish",
+    "url": "https://github.com/k3vur/gw.fish",
+    "description": "Small custom fish command to manage git worktrees.",
+    "technologies": ["fish"],
+    "year": 2026
+  }
+}

@@ -1,0 +1,14 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const projects = (await getCollection("projects")).toSorted(
+  (p1, p2) => p2.data.year - p1.data.year,
+);
+---
+
+<Layout language="en">
+  <section class="gap-s3 grid grid-cols-2 md:grid-cols-3">
+    {projects.map((project) => <ProjectCard project={project.data} />)}
+  </section>
+</Layout>
