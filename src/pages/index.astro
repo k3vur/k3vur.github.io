@@ -1,9 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Eyebrow from "../components/Eyebrow.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image } from "astro:assets";
+import Portrait from "../assets/kevin_urban.jpg";
 ---
 
 <Layout language="en">
@@ -26,36 +25,60 @@ import Eyebrow from "../components/Eyebrow.astro";
       ],
     })}
   />
-  <div class="flex flex-col gap-s5 pt-s6 pb-s5">
-    <section>
-      <Eyebrow>Software Engineer</Eyebrow>
-      <h1 class="font-medium mt-s2 mb-s3 text-display md:text-display-lg">
-        Hi, I'm Kevin Urban.
-      </h1>
-      <p
-        class="font-serif text-sub md:text-sub-lg leading-lede mb-s3 text-ink-soft"
-      >
-        I build full stack software and occasionally talk about the process of
-        building it.
-      </p>
-      <div class="flex font-mono text-meta text-muted mb-s4 gap-s1">
-        <span>BW, Germany</span> &middot;
-        <span>kevin.urban@icloud.com</span> &middot;
-        <span>he/him</span> &middot;
-        <a
-          class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
-          href="https://github.com/k3vur"
-          target="_blank"
-          rel="me noopener noreferrer"
-          >GitHub <span aria-hidden>&#x2197;</span></a
-        >&middot;
-        <a
-          class="text-accent whitespace-nowrap flex gap-0.5 hover:text-accent-strong hover:underline underline-offset-4"
-          href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
-          target="_blank"
-          rel="me noopener noreferrer"
-          >LinkedIn <span aria-hidden>&#x2197;</span></a
+  <div class="gap-s5 pt-s6 pb-s5 flex flex-col">
+    <section class="flex flex-col items-center md:flex-row md:items-start">
+      <div class="md:max-w-max-text max-w-full flex-1">
+        <Eyebrow>Software Engineer</Eyebrow>
+        <h1 class="mt-s2 mb-s3 text-display md:text-display-lg font-medium">
+          Hi, I'm Kevin Urban.
+        </h1>
+        <p
+          class="text-sub md:text-sub-lg leading-lede mb-s3 text-ink-soft pr-s1 font-serif"
         >
+          I build full stack software and care so much about the process of
+          building it that I occasionally talk about it.
+        </p>
+        <div
+          class="text-meta text-muted mb-s4 gap-y-s0 *:not-last:after:mx-s0 flex flex-wrap font-mono text-nowrap *:not-last:after:content-['·']"
+        >
+          <span>BW, Germany</span>
+          <span>he/him</span>
+          <span class="flex">
+            <a
+              class="text-accent hover:text-accent-strong gap-s0 underlineunderline-offset-4 flex whitespace-nowrap hover:underline"
+              href="mailto:kevin.urban@icloud.com"
+            >
+              kevin.urban@icloud.com
+            </a>
+          </span>
+          <span class="flex">
+            <a
+              class="text-accent hover:text-accent-strong gap-s0 flex whitespace-nowrap underline-offset-4 hover:underline"
+              href="https://github.com/k3vur"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              GitHub <span aria-hidden>&#x2197;</span>
+            </a>
+          </span>
+          <span class="flex">
+            <a
+              class="text-accent hover:text-accent-strong gap-s0 flex whitespace-nowrap underline-offset-4 hover:underline"
+              href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              LinkedIn <span aria-hidden>&#x2197;</span>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="text-center">
+        <Image
+          class="rounded-card border-hairline aspect-3/4 w-3xs border shadow-xs"
+          src={Portrait}
+          alt="Profile Picture"
+        />
       </div>
     </section>
 
@@ -87,18 +110,19 @@ import Eyebrow from "../components/Eyebrow.astro";
         new challenges.
       </p>
       <p>
-        Want to get in contact? Email me at <a
+        Want to get in contact? Email me at&nbsp;
+        <a
           class="text-accent hover:text-accent-strong hover:underline"
-          href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com!</a
-        >
+          href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</a
+        >!
       </p>
     </section>
 
     <section
       class="py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0"
     >
-      <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
-        <div class="flex items-baseline justify-between gap-s2 pr-s3">
+      <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
+        <div class="gap-s2 pr-s3 flex items-baseline justify-between">
           <h2 class="text-sub">Selected Projects</h2>
           <a
             class="text-meta tracking-meta text-accent hover:text-accent-strong font-mono whitespace-nowrap uppercase hover:underline hover:underline-offset-4"
@@ -106,8 +130,8 @@ import Eyebrow from "../components/Eyebrow.astro";
           >
         </div>
       </div>
-      <div class="pt-s5 md:pt-0 flex flex-col gap-s3">
-        <div class="flex items-baseline justify-between gap-s2 pl-s3">
+      <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
+        <div class="gap-s2 pl-s3 flex items-baseline justify-between">
           <h2 class="text-sub">Talks</h2>
           <a
             class="text-meta tracking-meta text-accent hover:text-accent-strong font-mono whitespace-nowrap uppercase hover:underline hover:underline-offset-4"
