@@ -67,14 +67,6 @@
   --color-warm-strong: #6f470f; /* DE badge hover */
   --color-warm-soft: #f5eedf; /* DE badge background */
 
-  /* ---- semantic badges: meaningful names, same values -----------------
-     The badge contract (DESIGN.md §9): EN = petrol, DE = ochre.
-     Gives you bg-en/text-en and bg-de/text-de directly in markup.      */
-  --color-en: var(--color-accent);
-  --color-en-soft: var(--color-accent-soft);
-  --color-de: var(--color-warm);
-  --color-de-soft: var(--color-warm-soft);
-
   /* ---- typography: families (DESIGN.md §4) ---------------------------- */
   /* Note: redefining --font-* REPLACES Tailwind's default stacks. */
   --font-serif: var(--font-newsreader);
