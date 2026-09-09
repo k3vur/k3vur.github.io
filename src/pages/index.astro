@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Eyebrow from "../components/Eyebrow.astro";
 import { Image } from "astro:assets";
 import Portrait from "../assets/kevin_urban.jpg";
+import Link from "../components/Link.astro";
 ---
 
 <Layout language="en">
@@ -44,32 +45,22 @@ import Portrait from "../assets/kevin_urban.jpg";
           <span>BW, Germany</span>
           <span>he/him</span>
           <span class="flex">
-            <a
-              class="text-accent hover:text-accent-strong gap-s0 underlineunderline-offset-4 flex whitespace-nowrap hover:underline"
-              href="mailto:kevin.urban@icloud.com"
-            >
+            <Link href="mailto:kevin.urban@icloud.com">
               kevin.urban@icloud.com
-            </a>
+            </Link>
           </span>
           <span class="flex">
-            <a
-              class="text-accent hover:text-accent-strong gap-s0 flex whitespace-nowrap underline-offset-4 hover:underline"
-              href="https://github.com/k3vur"
-              target="_blank"
-              rel="me noopener noreferrer"
-            >
-              GitHub <span aria-hidden>&#x2197;</span>
-            </a>
+            <Link href="https://github.com/k3vur" rel="me noopener noreferrer">
+              GitHub
+            </Link>
           </span>
           <span class="flex">
-            <a
-              class="text-accent hover:text-accent-strong gap-s0 flex whitespace-nowrap underline-offset-4 hover:underline"
+            <Link
               href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
-              target="_blank"
               rel="me noopener noreferrer"
             >
-              LinkedIn <span aria-hidden>&#x2197;</span>
-            </a>
+              LinkedIn
+            </Link>
           </span>
         </div>
       </div>
@@ -110,11 +101,9 @@ import Portrait from "../assets/kevin_urban.jpg";
         new challenges.
       </p>
       <p>
-        Want to get in contact? Email me at&nbsp;
-        <a
-          class="text-accent hover:text-accent-strong hover:underline"
-          href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</a
-        >!
+        Want to get in contact? Email me at
+        <Link href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</Link>
+        !
       </p>
     </section>
 
@@ -124,19 +113,23 @@ import Portrait from "../assets/kevin_urban.jpg";
       <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
         <div class="gap-s2 pr-s3 flex items-baseline justify-between">
           <h2 class="text-sub">Selected Projects</h2>
-          <a
-            class="text-meta tracking-meta text-accent hover:text-accent-strong font-mono whitespace-nowrap uppercase hover:underline hover:underline-offset-4"
-            href="/projects">All Projects &rarr;</a
+          <Link
+            href="/projects"
+            class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
           >
+            All Projects &rarr;
+          </Link>
         </div>
       </div>
       <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
         <div class="gap-s2 pl-s3 flex items-baseline justify-between">
           <h2 class="text-sub">Talks</h2>
-          <a
-            class="text-meta tracking-meta text-accent hover:text-accent-strong font-mono whitespace-nowrap uppercase hover:underline hover:underline-offset-4"
-            href="/talks">All talks &rarr;</a
+          <Link
+            href="/talks"
+            class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
           >
+            All talks &rarr;
+          </Link>
         </div>
       </div>
     </section>

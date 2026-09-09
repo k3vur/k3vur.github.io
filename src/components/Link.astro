@@ -1,0 +1,24 @@
+---
+import { cn } from "../lib/cn";
+
+interface Props {
+  href: string;
+  rel?: string;
+  class?: string;
+}
+const { href, rel, class: className } = Astro.props;
+const isExternal = href.startsWith("http");
+---
+
+<a
+  class={cn(
+    "text-accent hover:text-accent-strong gap-s0 underlineunderline-offset-4 flex whitespace-nowrap hover:underline",
+    className,
+  )}
+  href={href}
+  rel={rel}
+  target={isExternal ? "_blank" : "_self"}
+>
+  <slot />
+  {isExternal && <span aria-hidden>&#x2197;</span>}
+</a>
