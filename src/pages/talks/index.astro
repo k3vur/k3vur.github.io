@@ -1,0 +1,12 @@
+---
+import TalkListItem from "../../components/TalkListItem.astro";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+const talks = (await getCollection("talks")).toSorted(
+  (t1, t2) => t2.data.year - t1.data.year,
+);
+---
+
+<Layout language="en">
+  {talks.map((t) => <TalkListItem talk={t} />)}
+</Layout>

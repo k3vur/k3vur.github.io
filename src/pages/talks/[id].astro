@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = (async () => {
+  const talks = await getCollection("talks");
+  return talks.map((t) => ({ params: { id: t.id } }));
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+const talk = await getEntry("talks", id);
+---
+
+{talk?.body}

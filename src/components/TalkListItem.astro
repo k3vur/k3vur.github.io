@@ -1,0 +1,30 @@
+---
+import Badge from "../components/Badge.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  talk: CollectionEntry<"talks">;
+}
+
+const { talk } = Astro.props;
+---
+
+<a
+  class="gap-x-s3 py-s2 border-hairline group grid grid-cols-2 items-baseline border-b"
+  href={talk.data.type === "reveal" ? `/talks/${talk.id}` : talk.data.path}
+>
+  <div
+    class="text-meta text-muted gap-s1 flex flex-wrap items-center font-mono"
+  >
+    <time>{talk.data.year}</time>
+    <Badge>{talk.data.language}</Badge>
+    <span></span>
+  </div>
+  <div>
+    <span
+      class="group-hover:text-accent text-h3 text-ink font-serif transition-colors"
+      >{talk.data.title}</span
+    >
+    <span class="text-muted text-small mt-s0">{talk.data.description}</span>
+  </div>
+</a>
