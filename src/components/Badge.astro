@@ -1,5 +1,18 @@
+---
+import { cn } from "../lib/cn";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
 <span
-  class="text-micro tracking-meta leading-lede inline-block rounded-full font-mono font-medium whitespace-nowrap uppercase"
+  class={cn(
+    "text-micro tracking-meta leading-display px-s1 py-s0 inline-block rounded-full font-mono font-medium whitespace-nowrap uppercase",
+    className,
+  )}
 >
   <slot />
 </span>

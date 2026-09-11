@@ -9,8 +9,14 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Section from "../components/Section.astro";
 import PageTitle from "../components/head/PageTitle.astro";
 import Lede from "../components/head/Lede.astro";
+import TalkListItem from "../components/TalkListItem.astro";
+import { MoveRight } from "@lucide/astro";
 
 const projects = (await getCollection("projects"))
+  .toSorted((p1, p2) => p2.data.year - p1.data.year)
+  .slice(0, 3);
+
+const talks = (await getCollection("talks"))
   .toSorted((p1, p2) => p2.data.year - p1.data.year)
   .slice(0, 3);
 ---
@@ -102,9 +108,9 @@ const projects = (await getCollection("projects"))
       new challenges.
     </p>
     <p>
-      Want to get in contact? Email me at
-      <Link href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</Link>
-      !
+      Want to get in contact? Email me at <Link
+        href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</Link
+      >!
     </p>
   </Section>
 
@@ -126,14 +132,17 @@ const projects = (await getCollection("projects"))
       </div>
     </div>
     <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
-      <div class="gap-s2 pl-s3 flex items-baseline justify-between">
-        <h2 class="text-sub">Talks</h2>
+      <div class="gap-s2 md:ml-s1 flex items-baseline justify-between">
+        <h2 class="text-sub">Recent Talks</h2>
         <Link
           href="/talks"
           class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
         >
-          All talks &rarr;
+          All talks <MoveRight />
         </Link>
+      </div>
+      <div class="border-hairline md:ml-s1 divide-hairline border-t border-b">
+        {talks.map((t) => <TalkListItem talk={t} />)}
       </div>
     </div>
   </Section>

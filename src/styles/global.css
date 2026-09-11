@@ -208,4 +208,10 @@
       animation-duration: 0.01ms !important;
     }
   }
+
+  .lucide {
+    height: 0.9em;
+    width: 0.9em;
+    translate: 0 calc(0.45em - 0.5cap); /* (0.5 * 0.9em) - (half of capital character height) */
+  }
 }

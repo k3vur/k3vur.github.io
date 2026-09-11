@@ -1,5 +1,6 @@
 ---
 import { cn } from "../lib/cn";
+import { ExternalLink } from "@lucide/astro";
 
 interface Props {
   href: string;
@@ -12,7 +13,7 @@ const isExternal = href.startsWith("http");
 
 <a
   class={cn(
-    "text-accent hover:text-accent-strong gap-s0 flex whitespace-nowrap underline-offset-4 hover:underline",
+    "text-accent hover:text-accent-strong gap-s0 inline-flex items-baseline whitespace-nowrap underline-offset-4 hover:underline",
     className,
   )}
   href={href}
@@ -20,5 +21,5 @@ const isExternal = href.startsWith("http");
   target={isExternal ? "_blank" : "_self"}
 >
   <slot />
-  {isExternal && <span aria-hidden>&#x2197;</span>}
+  {isExternal && <ExternalLink />}
 </a>

@@ -2,11 +2,20 @@
 import TalkListItem from "../../components/TalkListItem.astro";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import PageTitle from "../../components/head/PageTitle.astro";
+import Lede from "../../components/head/Lede.astro";
 const talks = (await getCollection("talks")).toSorted(
   (t1, t2) => t2.data.year - t1.data.year,
 );
 ---
 
 <Layout language="en">
-  {talks.map((t) => <TalkListItem talk={t} />)}
+  <Section>
+    <PageTitle>Talks</PageTitle>
+    <Lede>Slides from talks I gave, some in English some in German.</Lede>
+  </Section>
+  <Section class="border-hairline divide-hairline border-t border-b">
+    {talks.map((t) => <TalkListItem talk={t} />)}
+  </Section>
 </Layout>

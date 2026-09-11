@@ -7,24 +7,25 @@ interface Props {
 }
 
 const { talk } = Astro.props;
+const href = talk.data.type === "reveal" ? `/talks/${talk.id}` : talk.data.path;
+const action = talk.data.type === "reveal" ? "Slides →" : "PDF ↓";
+const badge =
+  talk.data.language === "de"
+    ? "bg-warm-soft text-warm"
+    : "bg-accent-soft text-accent-strong";
 ---
 
-<a
-  class="gap-x-s3 py-s2 border-hairline group grid grid-cols-2 items-baseline border-b"
-  href={talk.data.type === "reveal" ? `/talks/${talk.id}` : talk.data.path}
->
-  <div
-    class="text-meta text-muted gap-s1 flex flex-wrap items-center font-mono"
-  >
+<a class="group pt-s2 pb-s1h gap-y-s1h flex flex-col" href={href}>
+  <span class="text-meta text-muted gap-s1 flex items-baseline font-mono">
     <time>{talk.data.year}</time>
-    <Badge>{talk.data.language}</Badge>
-    <span></span>
-  </div>
-  <div>
-    <span
-      class="group-hover:text-accent text-h3 text-ink font-serif transition-colors"
-      >{talk.data.title}</span
+    <Badge class={badge}>{talk.data.language}</Badge>
+    <span class="text-accent group-hover:text-accent-strong transition-colors"
+      >{action}</span
     >
-    <span class="text-muted text-small mt-s0">{talk.data.description}</span>
-  </div>
+  </span>
+  <span
+    class="text-h3 leading-display text-ink group-hover:text-accent font-serif transition-colors"
+    >{talk.data.title}</span
+  >
+  <span class="text-muted text-small">{talk.data.description}</span>
 </a>

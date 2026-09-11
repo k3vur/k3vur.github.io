@@ -1,6 +1,7 @@
 ---
 import Lede from "../components/head/Lede.astro";
 import PageTitle from "../components/head/PageTitle.astro";
+import Link from "../components/Link.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import Section from "../components/Section.astro";
 import Layout from "../layouts/Layout.astro";
@@ -15,7 +16,8 @@ const projects = (await getCollection("projects")).toSorted(
     <PageTitle>Projects</PageTitle>
     <Lede>
       A few things I have built and open-sourced: small tools, apps, libs and
-      the site you are reading right now.
+      the site you are reading right now. Get the uncurated full list of
+      experiments at <Link href="https://github.com/k3vur">GitHub</Link>
     </Lede>
   </Section>
   <Section class="gap-s3 grid grid-cols-2 md:grid-cols-3">
