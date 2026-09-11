@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Eyebrow from "../components/Eyebrow.astro";
+import Eyebrow from "../components/head/Eyebrow.astro";
 import { Image } from "astro:assets";
 import Portrait from "../assets/kevin_urban.jpg";
 import Link from "../components/Link.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../components/ProjectCard.astro";
+import Section from "../components/Section.astro";
+import PageTitle from "../components/head/PageTitle.astro";
+import Lede from "../components/head/Lede.astro";
 
 const projects = (await getCollection("projects"))
   .toSorted((p1, p2) => p2.data.year - p1.data.year)
@@ -32,115 +35,106 @@ const projects = (await getCollection("projects"))
       ],
     })}
   />
-  <div class="gap-s5 pt-s6 pb-s5 flex flex-col">
-    <section class="flex flex-col items-center md:flex-row md:items-start">
-      <div class="md:max-w-max-text max-w-full flex-1">
-        <Eyebrow>Software Engineer</Eyebrow>
-        <h1 class="mt-s2 mb-s3 text-display md:text-display-lg font-medium">
-          Hi, I'm Kevin Urban.
-        </h1>
-        <p
-          class="text-sub md:text-sub-lg leading-lede mb-s3 text-ink-soft pr-s1 font-serif"
-        >
-          I build full stack software and care so much about the process of
-          building it that I occasionally talk about it.
-        </p>
-        <div
-          class="text-meta text-muted mb-s4 gap-y-s0 *:not-last:after:mx-s0 flex flex-wrap font-mono text-nowrap *:not-last:after:content-['·']"
-        >
-          <span>BW, Germany</span>
-          <span>he/him</span>
-          <span class="flex">
-            <Link href="mailto:kevin.urban@icloud.com">
-              kevin.urban@icloud.com
-            </Link>
-          </span>
-          <span class="flex">
-            <Link href="https://github.com/k3vur" rel="me noopener noreferrer">
-              GitHub
-            </Link>
-          </span>
-          <span class="flex">
-            <Link
-              href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
-              rel="me noopener noreferrer"
-            >
-              LinkedIn
-            </Link>
-          </span>
-        </div>
-      </div>
-      <div class="text-center">
-        <Image
-          class="rounded-card border-hairline aspect-3/4 w-3xs border shadow-xs"
-          src={Portrait}
-          alt="Profile Picture"
-        />
-      </div>
-    </section>
-
-    <section
-      class="max-w-max-text text-ink-soft gap-s2 text-body m-0 flex flex-col"
-    >
-      <p>
-        I have been a professional Software Engineer since 2014, although I
-        studied Computer Science for 5 years before that and started coding even
-        earlier than that. I care about code and everything that relates to it,
-        whether it's trying to find the best and simplest abstraction, enabling
-        my team to ship more consistently, or talking to users to find out how
-        the next feature can help them best.
-      </p>
-      <p>
-        Whenever I get the opportunity, I also like to talk about building
-        software or publish what I build privately. This is my showcase for
-        that.
-      </p>
-    </section>
-
-    <section
-      class="max-w-max-text text-ink-soft gap-s2 text-body m-0 flex flex-col"
-    >
-      <Eyebrow>Now</Eyebrow>
-      <p>
-        Most recently, I've been a Senior Full Stack Engineer at DeepL, building
-        the internal language data platform. Since recent layoffs, I'm open for
-        new challenges.
-      </p>
-      <p>
-        Want to get in contact? Email me at
-        <Link href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</Link>
-        !
-      </p>
-    </section>
-
-    <section
-      class="py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0"
-    >
-      <div class="pt-s5 pr-s3 gap-s3 flex flex-col md:pt-0">
-        <div class="gap-s2 flex items-baseline justify-between">
-          <h2 class="text-sub">Recent Projects</h2>
-          <Link
-            href="/projects"
-            class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
-          >
-            All Projects &rarr;
+  <Section class="items-center md:flex-row md:items-start">
+    <div class="md:max-w-max-text max-w-full flex-1">
+      <PageTitle>
+        I'm Kevin Urban<br />
+        I love building full stack software.
+      </PageTitle>
+      <Lede>
+        Sometimes I care so much about the process of building it, that I talk
+        about it or publish a project.
+      </Lede>
+      <div
+        class="text-meta text-muted mb-s4 gap-y-s0 *:not-last:after:mx-s0 flex flex-wrap font-mono text-nowrap *:not-last:after:content-['·']"
+      >
+        <span>BW, Germany</span>
+        <span>he/him</span>
+        <span class="flex">
+          <Link href="mailto:kevin.urban@icloud.com">
+            kevin.urban@icloud.com
           </Link>
-        </div>
-        <div class="gap-s3 grid grid-cols-1">
-          {projects.map((p) => <ProjectCard project={p.data} />)}
-        </div>
-      </div>
-      <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
-        <div class="gap-s2 pl-s3 flex items-baseline justify-between">
-          <h2 class="text-sub">Talks</h2>
-          <Link
-            href="/talks"
-            class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
-          >
-            All talks &rarr;
+        </span>
+        <span class="flex">
+          <Link href="https://github.com/k3vur" rel="me noopener noreferrer">
+            GitHub
           </Link>
-        </div>
+        </span>
+        <span class="flex">
+          <Link
+            href="https://www.linkedin.com/in/kevin-urban-38bb46100/"
+            rel="me noopener noreferrer"
+          >
+            LinkedIn
+          </Link>
+        </span>
       </div>
-    </section>
-  </div>
+    </div>
+    <div class="text-center">
+      <Image
+        class="rounded-card border-hairline aspect-3/4 w-3xs border shadow-xs"
+        src={Portrait}
+        alt="Profile Picture"
+      />
+    </div>
+  </Section>
+
+  <Section>
+    <p>
+      I have been a professional Software Engineer since 2014, although I
+      studied Computer Science for 5 years before that and started coding even
+      earlier than that. I care about code and everything that relates to it,
+      whether it's trying to find the best and simplest abstraction, enabling my
+      team to ship more consistently, or talking to users to find out how the
+      next feature can help them best.
+    </p>
+    <p>
+      Whenever I get the opportunity, I also like to talk about building
+      software or publish what I build privately. This is my showcase for that.
+    </p>
+  </Section>
+
+  <Section>
+    <Eyebrow>Now</Eyebrow>
+    <p>
+      Most recently, I've been a Senior Full Stack Engineer at DeepL, building
+      the internal language data platform. Since recent layoffs, I'm open for
+      new challenges.
+    </p>
+    <p>
+      Want to get in contact? Email me at
+      <Link href="mailto:kevin.urban@icloud.com">kevin.urban@icloud.com</Link>
+      !
+    </p>
+  </Section>
+
+  <Section
+    class="py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0"
+  >
+    <div class="pt-s5 pr-s3 gap-s3 flex flex-col md:pt-0">
+      <div class="gap-s2 flex items-baseline justify-between">
+        <h2 class="text-sub">Recent Projects</h2>
+        <Link
+          href="/projects"
+          class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
+        >
+          All Projects &rarr;
+        </Link>
+      </div>
+      <div class="gap-s3 grid grid-cols-1">
+        {projects.map((p) => <ProjectCard project={p.data} />)}
+      </div>
+    </div>
+    <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
+      <div class="gap-s2 pl-s3 flex items-baseline justify-between">
+        <h2 class="text-sub">Talks</h2>
+        <Link
+          href="/talks"
+          class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
+        >
+          All talks &rarr;
+        </Link>
+      </div>
+    </div>
+  </Section>
 </Layout>

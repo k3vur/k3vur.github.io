@@ -1,5 +1,8 @@
 ---
+import Lede from "../components/head/Lede.astro";
+import PageTitle from "../components/head/PageTitle.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import Section from "../components/Section.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 const projects = (await getCollection("projects")).toSorted(
@@ -8,7 +11,14 @@ const projects = (await getCollection("projects")).toSorted(
 ---
 
 <Layout language="en">
-  <section class="gap-s3 grid grid-cols-2 md:grid-cols-3">
+  <Section>
+    <PageTitle>Projects</PageTitle>
+    <Lede>
+      A few things I have built and open-sourced: small tools, apps, libs and
+      the site you are reading right now.
+    </Lede>
+  </Section>
+  <Section class="gap-s3 grid grid-cols-2 md:grid-cols-3">
     {projects.map((project) => <ProjectCard project={project.data} />)}
-  </section>
+  </Section>
 </Layout>

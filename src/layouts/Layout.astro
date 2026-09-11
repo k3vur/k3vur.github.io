@@ -26,7 +26,6 @@ const siteName = "kevur.me";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content={description} />
     <link rel="canonical" href={url} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -61,7 +60,7 @@ const siteName = "kevur.me";
     </header>
 
     <main class="px-s3">
-      <div class="max-w-max-width mx-auto">
+      <div class="max-w-max-width gap-s5 pt-s6 pb-s5 mx-auto flex flex-col">
         <slot />
       </div>
     </main>
