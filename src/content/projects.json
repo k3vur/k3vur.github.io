@@ -25,5 +25,26 @@
     "description": "Small custom fish command to manage git worktrees.",
     "technologies": ["fish"],
     "year": 2026
+  },
+  "kevur.me": {
+    "title": "kevur.me",
+    "url": "https://github.com/k3vur.github.io",
+    "description": "This Home Page, built with Astro and hosted on GitHub pages.",
+    "technologies": ["Astro", "GitHub Pages"],
+    "year": 2026
+  },
+  "aws-lambda-2-imagemagick-freetype": {
+    "title": "ImageMagick with FreeType support for AWS Lambda 2",
+    "url": "https://github.com/k3vur/imagemagick-freetype-aws-lambda-2",
+    "description": "Forked AWS Lambda 2 Runtime with ImageMagick to addd FreeType support",
+    "technologies": ["AWS Lambda", "ImageMagick", "Linux"],
+    "year": 2022
+  },
+  "excel-parser": {
+    "title": "JVM Excel Parser",
+    "url": "https://github.com/k3vur/excel-parser",
+    "description": "Small library for JVM languages for stream based parsing and processing of XLSX + CSV files",
+    "technologies": ["JVM", "Kotlin"],
+    "year": 2021
   }
 }
