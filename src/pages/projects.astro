@@ -1,10 +1,10 @@
 ---
-import Lede from "../components/head/Lede.astro";
-import PageTitle from "../components/head/PageTitle.astro";
-import Link from "../components/Link.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import Section from "../components/Section.astro";
-import Layout from "../layouts/Layout.astro";
+import Lede from "@/components/head/Lede.astro";
+import PageTitle from "@/components/head/PageTitle.astro";
+import Link from "@/components/Link.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import Section from "@/components/Section.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 const projects = (await getCollection("projects")).toSorted(
   (p1, p2) => p2.data.year - p1.data.year,

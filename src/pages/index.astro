@@ -1,15 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Eyebrow from "../components/head/Eyebrow.astro";
+import Layout from "@/layouts/Layout.astro";
+import Eyebrow from "@/components/head/Eyebrow.astro";
 import { Image } from "astro:assets";
-import Portrait from "../assets/kevin_urban.jpg";
-import Link from "../components/Link.astro";
+import Portrait from "@/assets/kevin_urban.jpg";
+import Link from "@/components/Link.astro";
 import { getCollection } from "astro:content";
-import ProjectCard from "../components/ProjectCard.astro";
-import Section from "../components/Section.astro";
-import PageTitle from "../components/head/PageTitle.astro";
-import Lede from "../components/head/Lede.astro";
-import TalkListItem from "../components/TalkListItem.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import Section from "@/components/Section.astro";
+import PageTitle from "@/components/head/PageTitle.astro";
+import Lede from "@/components/head/Lede.astro";
+import TalkListItem from "@/components/TalkListItem.astro";
 import { MoveRight } from "@lucide/astro";
 
 const projects = (await getCollection("projects"))

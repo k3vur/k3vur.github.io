@@ -1,7 +1,7 @@
 import { file, glob } from "astro/loaders";
 import { defineCollection } from "astro:content";
-import { Project } from "./lib/projects";
-import { Talk } from "./lib/talks";
+import { Project } from "@/lib/projects";
+import { Talk } from "@/lib/talks";
 
 const projects = defineCollection({
   loader: file("src/content/projects.json"),
