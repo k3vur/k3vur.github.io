@@ -1,5 +1,13 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@/lib/i18n";
 
+const indexUrl = getRelativeLocaleUrl(Astro.currentLocale!, "/");
+const projectsUrl = getRelativeLocaleUrl(Astro.currentLocale!, "/projects");
+const talksUrl = getRelativeLocaleUrl(Astro.currentLocale!, "/talks");
+const cvUrl = getRelativeLocaleUrl(Astro.currentLocale!, "/cv");
+
+const t = useTranslations(Astro.currentLocale!);
 ---
 
 <nav
@@ -8,23 +16,26 @@
 >
   <a
     class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
-    href="/"
-    aria-current={Astro.routePattern === "/" ? "page" : undefined}>About</a
+    href={indexUrl}
+    aria-current={Astro.routePattern === indexUrl ? "page" : undefined}
+    >{t("navigation.about-me")}</a
   >
   <a
     class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
-    href="/projects"
-    aria-current={Astro.routePattern === "/projects" ? "page" : undefined}
-    >Projects</a
+    href={projectsUrl}
+    aria-current={Astro.routePattern === projectsUrl ? "page" : undefined}
+    >{t("navigation.projects")}</a
   >
   <a
     class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
-    href="/talks"
-    aria-current={Astro.routePattern === "/talks" ? "page" : undefined}>Talks</a
+    href={talksUrl}
+    aria-current={Astro.routePattern === talksUrl ? "page" : undefined}
+    >{t("navigation.talks")}</a
   >
   <a
     class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
-    href="/cv"
-    aria-current={Astro.routePattern === "/cv" ? "page" : undefined}>CV</a
+    href={cvUrl}
+    aria-current={Astro.routePattern === cvUrl ? "page" : undefined}
+    >{t("navigation.cv")}</a
   >
 </nav>

@@ -18,6 +18,9 @@ const languageButton = cva(
     },
   },
 );
+
+const enUrl = localizedUrl("en", Astro.routePattern);
+const deUrl = localizedUrl("de", Astro.routePattern);
 ---
 
 <div
@@ -29,13 +32,13 @@ const languageButton = cva(
   aria-label="Language"
 >
   <a
-    href="/"
+    href={enUrl}
     aria-current={currentLanguage === "en" ? "page" : undefined}
     class={languageButton({ active: currentLanguage === "en" })}>EN</a
   >
   <span class="text-hairline" aria-hidden="true">/</span>
   <a
-    href="/de"
+    href={deUrl}
     aria-current={currentLanguage === "de" ? "page" : undefined}
     class={languageButton({ active: currentLanguage === "de" })}>DE</a
   >
