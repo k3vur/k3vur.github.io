@@ -8,10 +8,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  i18n: {
-    locales: ["de", "en"],
-    defaultLocale: "en",
-  },
   fonts: [
     {
       provider: fontProviders.google(),

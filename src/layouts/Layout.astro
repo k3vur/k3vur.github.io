@@ -1,17 +1,14 @@
 ---
 import { Font } from "astro:assets";
 import "@/styles/global.css";
-import LanguagePicker from "@/components/LanguagePicker.astro";
 import Navigation from "@/components/Navigation.astro";
 interface Props {
-  language: "de" | "en";
   title?: string;
   description?: string;
   /** Absolute URL of this page; defaults to the homepage. */
   url?: string;
 }
 const {
-  language,
   title = "kevur.me – Kevin Urban, Software Engineer",
   description = "Kevin Urban is a full-stack software engineer based in Baden-Württemberg, Germany, building software since 2014.",
   url = "https://kevur.me/",
@@ -21,7 +18,7 @@ const siteName = "kevur.me";
 ---
 
 <!doctype html>
-<html lang={language}>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,14 +44,13 @@ const siteName = "kevur.me";
         class="gap-s2 md:gap-s3 py-s1h max-w-max-width mx-auto flex flex-wrap items-center md:flex-nowrap"
       >
         <a
-          class="text-body group text-ink font-mono text-lg font-medium tracking-tight whitespace-nowrap md:order-1"
+          class="text-body group text-ink font-mono text-lg font-medium tracking-tight whitespace-nowrap"
           href="/"
         >
           kevur<span class="text-accent group-hover:text-accent-strong"
             >.me</span
           >
         </a>
-        <LanguagePicker currentLanguage={language} class="md:order-3" />
         <Navigation />
       </div>
     </header>

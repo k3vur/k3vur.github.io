@@ -9,16 +9,16 @@ interface Props {
 const { talk } = Astro.props;
 const href = talk.data.type === "reveal" ? `/talks/${talk.id}` : talk.data.path;
 const action = talk.data.type === "reveal" ? "Slides →" : "PDF ↓";
-const badge =
-  talk.data.language === "de"
-    ? "bg-warm-soft text-warm"
-    : "bg-accent-soft text-accent-strong";
 ---
 
 <a class="group pt-s2 pb-s1h gap-y-s1h flex flex-col" href={href}>
   <span class="text-meta text-muted gap-s1 flex items-baseline font-mono">
     <time>{talk.data.year}</time>
-    <Badge class={badge}>{talk.data.language}</Badge>
+    {
+      talk.data.language === "de" && (
+        <Badge class="bg-warm-soft text-warm">{talk.data.language}</Badge>
+      )
+    }
     <span class="text-accent group-hover:text-accent-strong transition-colors"
       >{action}</span
     >
