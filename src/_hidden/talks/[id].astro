@@ -4,7 +4,9 @@ import { getEntry, getCollection } from "astro:content";
 
 export const getStaticPaths = (async () => {
   const talks = await getCollection("talks");
-  return talks.map((t) => ({ params: { id: t.id } }));
+  return talks
+    .filter((t) => !t.data.draft)
+    .map((t) => ({ params: { id: t.id } }));
 }) satisfies GetStaticPaths;
 
 const { id } = Astro.params;

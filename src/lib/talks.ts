@@ -6,6 +6,7 @@ export const TalkBase = z.object({
   description: z.string(),
   year: z.int().min(2000).max(2100),
   language: z.enum(["de", "en"]),
+  draft: z.boolean().default(false),
 });
 
 export const TalkRevealJs = TalkBase.extend({

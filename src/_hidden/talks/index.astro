@@ -5,9 +5,9 @@ import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
 import PageTitle from "@/components/head/PageTitle.astro";
 import Lede from "@/components/head/Lede.astro";
-const talks = (await getCollection("talks")).toSorted(
-  (t1, t2) => t2.data.year - t1.data.year,
-);
+const talks = (await getCollection("talks"))
+  .filter((t) => !t.data.draft)
+  .toSorted((t1, t2) => t2.data.year - t1.data.year);
 ---
 
 <Layout>

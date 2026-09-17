@@ -17,7 +17,8 @@ const projects = (await getCollection("projects"))
   .slice(0, 3);
 
 const talks = (await getCollection("talks"))
-  .toSorted((p1, p2) => p2.data.year - p1.data.year)
+  .filter((t) => !t.data.draft)
+  .toSorted((t1, t2) => t2.data.year - t1.data.year)
   .slice(0, 3);
 ---
 
@@ -115,7 +116,10 @@ const talks = (await getCollection("talks"))
   </Section>
 
   <Section
-    class="py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0"
+    class:list={[
+      "py-s5 gap-y-s5 divide-hairline grid grid-cols-1 items-start divide-y",
+      talks.length > 0 && "md:grid-cols-2 md:gap-y-0 md:divide-x md:divide-y-0",
+    ]}
   >
     <div class="pt-s5 pr-s3 gap-s3 flex flex-col md:pt-0">
       <div class="gap-s2 flex items-baseline justify-between">
@@ -131,19 +135,25 @@ const talks = (await getCollection("talks"))
         {projects.map((p) => <ProjectCard project={p.data} />)}
       </div>
     </div>
-    <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
-      <div class="gap-s2 md:ml-s1 flex items-baseline justify-between">
-        <h2 class="text-sub">Recent Talks</h2>
-        <Link
-          href="/talks"
-          class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
-        >
-          All talks <MoveRight />
-        </Link>
-      </div>
-      <div class="border-hairline md:ml-s1 divide-hairline border-t border-b">
-        {talks.map((t) => <TalkListItem talk={t} />)}
-      </div>
-    </div>
+    {
+      talks.length > 0 && (
+        <div class="pt-s5 gap-s3 flex flex-col md:pt-0">
+          <div class="gap-s2 md:ml-s1 flex items-baseline justify-between">
+            <h2 class="text-sub">Recent Talks</h2>
+            <Link
+              href="/talks"
+              class="text-meta tracking-meta font-mono whitespace-nowrap uppercase"
+            >
+              All talks <MoveRight />
+            </Link>
+          </div>
+          <div class="border-hairline md:ml-s1 divide-hairline border-t border-b">
+            {talks.map((t) => (
+              <TalkListItem talk={t} />
+            ))}
+          </div>
+        </div>
+      )
+    }
   </Section>
 </Layout>

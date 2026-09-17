@@ -1,25 +1,30 @@
----
-const navItems = [
-  { href: "/", label: "About me" },
-  { href: "/projects", label: "Projects" },
-  { href: "/talks", label: "Talks" },
-  { href: "/cv", label: "CV" },
-];
----
-
 <nav
   class="gap-s3 mx-0 flex w-full flex-wrap md:ml-auto md:w-auto md:flex-nowrap"
   aria-label="Primary"
 >
+  <a
+    class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
+    href="/"
+    aria-current={Astro.routePattern === "/" ? "page" : undefined}>About me</a
+  >
+  <a
+    class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
+    href="/projects"
+    aria-current={Astro.routePattern === "/projects" ? "page" : undefined}
+    >Projects</a
+  >
   {
-    navItems.map(({ href, label }) => (
-      <a
-        class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
-        href={href}
-        aria-current={Astro.routePattern === href ? "page" : undefined}
-      >
-        {label}
-      </a>
-    ))
+    /* hidden for early release — uncomment together with src/_hidden/talks
+  <a
+    class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
+    href="/talks"
+    aria-current={Astro.routePattern === "/talks" ? "page" : undefined}>Talks</a
+  >
+  <a
+    class="text-ink-soft text-small py-s0 hover:text-ink hover:border-b-accent border-b border-b-transparent"
+    href="/cv"
+    aria-current={Astro.routePattern === "/cv" ? "page" : undefined}>CV</a
+  >
+  */
   }
 </nav>
